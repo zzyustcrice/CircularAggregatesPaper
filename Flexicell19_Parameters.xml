@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexiCellSimulationParameters>  
+  
+    <simulationWorld>
+      <worldWidth type="float">200.0</worldWidth>
+      <worldHeight type="float">200.0</worldHeight>
+    </simulationWorld>
+	
+	<!-- Options: RectangularEdgeBoundary, RectangularSolidBoundary, 
+	RectangularSolidSoftBoundary, CircularEdgeBoundary, 
+	CircularSolidBoundary, CircularSolidSoftBoundary, 
+	RepulsiveSolidBoundary, PeriodicBoundary, 
+	ReflectiveBoundary, AbsorbingBoundary,
+    MixedRectangularBoundary -->
+	<WorldBoundary>
+      <worldBoundaryType type="string">PeriodicBoundary</worldBoundaryType>
+	  <checkPeriodicBoundaryConsistency type="boolean">true</checkPeriodicBoundaryConsistency>
+	  <simplePeriodicBoundaryFlag type="boolean">true</simplePeriodicBoundaryFlag>
+	  <MixedRectangularBoundary>
+		  <leftBoundary type="string">PeriodicBoundary</leftBoundary>
+		  <rightBoundary type="string">PeriodicBoundary</rightBoundary>
+		  <topBoundary type="string">AbsorbingBoundary</topBoundary>
+		  <bottomBoundary type="string">ReflectiveBoundary</bottomBoundary>
+	  </MixedRectangularBoundary>
+	</WorldBoundary>
+	   
+    <cellParameters>    
+      <numNodes type="int">7</numNodes>
+      <cellLength type="float">6.0</cellLength>
+      <cellWidth type="float">0.5</cellWidth>
+      <cellMass type="float">1.2</cellMass>
+      <cellFriction type="float">0.0</cellFriction>      
+      <linearDamping type="float">8.0E13</linearDamping>
+      <CellFlexibility>
+        <angularSpringConstant type="float">3.6E13</angularSpringConstant>		
+      </CellFlexibility>      
+      <applyAsymmetricDrag type="boolean">false</applyAsymmetricDrag>      
+    </cellParameters>
+	
+	<simulationParameters>
+      <initialCellNum type="int">2953</initialCellNum>
+      <timedSimulation type="boolean">true</timedSimulation>
+      <simFinalTime type="float">250.0</simFinalTime>
+    </simulationParameters>
+	
+    <cellInitialization>      
+	  <!-- Options: RandomCellPosInitialize, CenterRandomCellPosInitialize,
+		CustomRectRegionCellPosInitialize, CenterOrderedCellPosInitialize,
+		CenterCircularCellPosInitialize, RandomExistingCellOrientation -->
+		<cellPosInitializationMethod type="string">RandomCellPosInitialize</cellPosInitializationMethod>
+		<initCenterWidth type="float">200</initCenterWidth>
+		<initCenterHeight type="float">200</initCenterHeight>
+		<initBoxLeft type="float">-100</initBoxLeft>
+		<initBoxRight type="float">100</initBoxRight>
+		<initBoxBottom type="float">0</initBoxBottom>
+		<initBoxTop type="float">200</initBoxTop>
+		<initCenterRadius type="float">42</initCenterRadius>
+		<initSepX type="float">1.5</initSepX>
+		<initSepY type="float">3</initSepY>
+		<checkCellOverlapForInitialization type="boolean">false</checkCellOverlapForInitialization>
+	  
+	  <!-- Options: RandomCellOriInitialize, FixedCellOriInitialize, 
+	  GaussianCellOriInitialize, FixedFractionCellOriInitialize -->
+		<cellOriInitializationMethod type="string">RandomCellOriInitialize</cellOriInitializationMethod>
+		<meanCellOrientation type="float">1.57</meanCellOrientation>
+		<stdDevCellOrientation type="float">0.26</stdDevCellOrientation>
+		<!-- max std.dev. = PI/3 corresponding to max spread of [+/- PI] (spread = 3*std.dev.)-->
+		<fixedCellOrientationFraction type="float">0.1</fixedCellOrientationFraction>
+		<!-- useful for fixed cell orientation -->
+		<randomHeadTailFlag type="boolean">false</randomHeadTailFlag>
+		
+		<initialConstantDensityRegion type="boolean">false</initialConstantDensityRegion>      
+	  <constantDensityBox>	  
+		<constDensityRegion type="boolean">false</constDensityRegion>        
+        <constDensityBoxLeft type="float">-50</constDensityBoxLeft>
+        <constDensityBoxRight type="float">-50</constDensityBoxRight>
+        <constDensityBoxBottom type="float">0</constDensityBoxBottom>
+        <constDensityBoxTop type="float">50</constDensityBoxTop>
+      </constantDensityBox>
+    </cellInitialization>
+	
+    <AEngine>
+      <activeAEngine type="boolean">true</activeAEngine>      
+	  <cellVelocity type="float">2.5</cellVelocity>
+      <!-- Value calculated from cellVelocity and linearDamping
+	  <maxAEngineForce type="float">2.16E14</maxAEngineForce> -->    	
+      <forceDistMethod type="ForceDistributionMethod">Equal</forceDistMethod>	  
+      <gaussianCellEngineForces type="boolean">false</gaussianCellEngineForces>
+      <maxForceGaussStd type="float">0.3</maxForceGaussStd>      	  
+      <forceChangeTime type="float">1.0</forceChangeTime>
+    </AEngine>
+	
+    <SEngine>
+      <activeSEngine type="boolean">false</activeSEngine>
+      <maxSEngineForce type="float">2.16E14</maxSEngineForce>
+      <randomInitialPiliLength type="boolean">true</randomInitialPiliLength>
+      <piliSurfaceAttachFlag type="boolean">true</piliSurfaceAttachFlag>
+      <piliSlimeAttachFlag type="boolean">false</piliSlimeAttachFlag>
+	  <drawPiliFlag type="boolean">true</drawPiliFlag>
+    </SEngine>     
+	
+    <slime>
+      <slimeCreationFlag type="boolean">true</slimeCreationFlag><!--create by cells-->
+      <slimeAlignmentFlag type="boolean">true</slimeAlignmentFlag>
+      <slimeProduceRate type="float">20.0</slimeProduceRate>
+      <slimeDegradeRateConstant type="float">1.0</slimeDegradeRateConstant>
+      <applySlimeAttractionFlag type="boolean">false</applySlimeAttractionFlag>  <!--attract?-->
+      <slimeAlignmentForceFraction type="float">1.0</slimeAlignmentForceFraction>    
+      <slimeAttractionTime type="float">3.0</slimeAttractionTime>
+      
+      <selfSlimeReinforceOff type="boolean">false</selfSlimeReinforceOff>
+      <neighborSlimeReinforceOff type="boolean">false</neighborSlimeReinforceOff>
+    </slime>
+    
+    <substrateAdhesion>
+      <createAdhesionComplexes type="boolean">true</createAdhesionComplexes>
+      <adhesionJointPositionBinary type="BinaryString">b1111110</adhesionJointPositionBinary>
+      <adhesionSpringConst type="float">3.6E14</adhesionSpringConst>
+      <adhesionBondBreakLength type="float">0.5</adhesionBondBreakLength>      
+      <attachmentBreakModel type="SubstrateAttachmentBreakModel">BreakLengthLimit</attachmentBreakModel>      
+      <firstNodeFormationProb type="float">0.8</firstNodeFormationProb>      
+    </substrateAdhesion>
+        
+    <randomHeadTurns>
+      <cellHeadTurnFlag type="boolean">true</cellHeadTurnFlag>
+      <turnActivationTime type="float">5.0</turnActivationTime>
+      <turnForceRetentionTime type="float">1.0</turnForceRetentionTime>      
+      <asynchronousCellHeadTurnsFlag type="boolean">true</asynchronousCellHeadTurnsFlag>
+    </randomHeadTurns>
+	
+    <cellReversals>
+      <cellReversalsFlag type="boolean">false</cellReversalsFlag>
+      <randomHeadTailFlag type="boolean">true</randomHeadTailFlag><!--?-->
+      <asynchronousCellReversalsFlag type="boolean">true</asynchronousCellReversalsFlag>
+      <reverseTimeMean type="float">8.0</reverseTimeMean>
+      <writeCellReversalPeriods type="boolean">true</writeCellReversalPeriods>
+	  
+      <gaussianCellreversalClock type="boolean">false</gaussianCellreversalClock>      
+      <reverseTimeGaussStd type="float">0.1</reverseTimeGaussStd>    
+	  
+      <applyStopAfterReversal type="boolean">false</applyStopAfterReversal>
+      <stopTimeAfterReversal type="float">1.0</stopTimeAfterReversal>
+	  
+      <signalReversalSuppressionFlag type="boolean">true</signalReversalSuppressionFlag>
+	  <drawReversalSuppressedCells type="boolean">true</drawReversalSuppressedCells>
+	  <normalEndToEndReversalSuppression type="boolean">true</normalEndToEndReversalSuppression>
+      <reversalSuppressionProbability type="float">1.0</reversalSuppressionProbability>	  
+      <reversalSuppressionFactor type="float">0</reversalSuppressionFactor>
+      <reversalSuppressionTimethreshold type="float">5</reversalSuppressionTimethreshold>
+      <reversalSuppressionRange type="float">0.1</reversalSuppressionRange>      
+	  <thresholdTimeEndToEndReversalSuppression type="boolean">false</thresholdTimeEndToEndReversalSuppression>
+	  <thresholdTimeForReversalSuppression type="float">0.5</thresholdTimeForReversalSuppression>
+      <lateralCellReversalSuppression type="boolean">true</lateralCellReversalSuppression>
+	  <lateralCellReversalSuppressionFactor type="float">0</lateralCellReversalSuppressionFactor>
+	  <lateralCellReversalSuppressionTimethreshold type="float">5</lateralCellReversalSuppressionTimethreshold>
+
+      <initialDiffReversalsFlag type="boolean">false</initialDiffReversalsFlag><!--change reversal /nonreversal after simulation-->
+      <initialDiffReversalMaintainTime type="float">5.0</initialDiffReversalMaintainTime>
+      <initialDiffReversalMaintainTime2 type="float">1000.0</initialDiffReversalMaintainTime2>      
+      <!-- set laterDiffReversalTime to >= 1000 to switch-off reversals later -->
+      <laterDiffReversalTime type="float">8.0</laterDiffReversalTime>
+	  
+      <mixReversingAndNonreversingCells type="boolean">false</mixReversingAndNonreversingCells>
+      <reversingCellFraction type="float">1.0</reversingCellFraction>
+    </cellReversals>
+	
+    <EndToEndAdhesion>
+      <applyEndToEndAdhesion type="boolean">true</applyEndToEndAdhesion>      
+      <endToEndAdhesionBondFormingLength type="float">0.1</endToEndAdhesionBondFormingLength>      
+      <endToEndAdhesionSpringConst type="float">7.2E14</endToEndAdhesionSpringConst><!--this number is not used, use same parameter with lateral supp-->
+      <endToEndAdhesionBreakLength type="float">1.5</endToEndAdhesionBreakLength>
+      <endToEndAdhesionAngle type="float">0.785</endToEndAdhesionAngle>
+      <writeEndToEndAdhesionBondLifeTimes type="boolean">true</writeEndToEndAdhesionBondLifeTimes>
+      <drawEndToEndAdhesion type="boolean">false</drawEndToEndAdhesion>
+    </EndToEndAdhesion>
+	
+    <lateralCellAdhesion>
+      <lateralCellInteraction type="boolean">true</lateralCellInteraction><!--side to side-->
+      <attractionForceFactor type="float">0</attractionForceFactor><!--also used for end-end adhesion-->
+      <applyLateralCellAttractiveForces type="boolean">true</applyLateralCellAttractiveForces>
+      <lateralAdhesionModel type="BondAttachmentModel">Regular</lateralAdhesionModel>
+      <drawLateralCellCellAttraction type="boolean">false</drawLateralCellCellAttraction>
+    </lateralCellAdhesion>
+	
+    <sideToSideSignaling>
+      <applySideToSideSignaling type="boolean">false</applySideToSideSignaling>
+      <sideToSideSignalProb type="float">1.0</sideToSideSignalProb>
+    </sideToSideSignaling>
+	
+    <cellGrowth>
+      <cellGrowthFlag type="boolean">false</cellGrowthFlag>
+	  <initializeCellsNextToOtherCells type="boolean">true</initializeCellsNextToOtherCells>
+	  <growthRate type="float">0.0429</growthRate>
+      <finalNumCells type="int">2200</finalNumCells>
+	  <maxPackingFraction type="float">0.98</maxPackingFraction>
+	  <exitAtMaxPackingFraction type="boolean">false</exitAtMaxPackingFraction>
+	  <asynchronousCellDivisionFlag type="boolean">true</asynchronousCellDivisionFlag>
+    </cellGrowth>
+	
+    <cellPassing>
+      <cellPassingFlag type="boolean">false</cellPassingFlag>
+      <passOverProbability type="float">1.0</passOverProbability>
+    </cellPassing>
+   
+    <drawSimulationFlags>      
+      <drawVectorFlag type="boolean">false</drawVectorFlag>
+      <drawAABBFlag type="boolean">false</drawAABBFlag>
+      <drawCellNumFlag type="boolean">false</drawCellNumFlag>      
+      <drawCellOutlineFlag type="boolean">true</drawCellOutlineFlag>
+	  <drawThickCellOutlineFlag type="boolean">true</drawThickCellOutlineFlag>
+      <drawSlimeOutlineFlag type="boolean">false</drawSlimeOutlineFlag>
+      <drawForceVectorFlag type="boolean">false</drawForceVectorFlag>
+      <drawSlimeVectorFlag type="boolean">false</drawSlimeVectorFlag>
+      <drawCellShapeFlag type="boolean">false</drawCellShapeFlag>
+      <drawVirtualCellShapeFlag type="boolean">false</drawVirtualCellShapeFlag>
+      <drawBendingEqbmForces type="boolean">false</drawBendingEqbmForces>
+      <drawSlimeGrid type="boolean">false</drawSlimeGrid>
+      <drawGridNum type="boolean">true</drawGridNum>
+      <drawSlimeShapeFlag type="boolean">false</drawSlimeShapeFlag>      
+      <drawAdhesionComplexVectors type="boolean">false</drawAdhesionComplexVectors>
+      <drawAdhesionComplexes type="boolean">false</drawAdhesionComplexes>
+      <drawAdhesionRestoreForceVectors type="boolean">false</drawAdhesionRestoreForceVectors>      
+      <drawAsymmetricDragForce type="boolean">false</drawAsymmetricDragForce>      
+      <cellOutlineColor type="Color3f">Red</cellOutlineColor>
+    </drawSimulationFlags>
+	
+    <displayParameters>
+      <displayTimeOutput type="boolean">true</displayTimeOutput>
+      <displayDetailedOutput type="boolean">false</displayDetailedOutput>
+      <displaySingleCellVelocity type="boolean">true</displaySingleCellVelocity>
+      <displayCellVelocities type="boolean">false</displayCellVelocities>      
+    </displayParameters>
+    	
+    <calculations>
+      <dataDir type="java.lang.String">runData</dataDir>
+      <calculationTime type="float">1.0</calculationTime>    <!--min-->
+      <calculateMeanVelFlag type="boolean">false</calculateMeanVelFlag>
+      <calOrientationCorrelation type="boolean">false</calOrientationCorrelation>
+      <calAvgAutoOrientationCorrelation type="boolean">false</calAvgAutoOrientationCorrelation>
+      <calMeanOrientationCorrelation type="boolean">false</calMeanOrientationCorrelation>
+      <writeCellOrientations type="boolean">false</writeCellOrientations>
+      <writeCellPositions type="boolean">false</writeCellPositions>
+      <writeCellNodePositions type="boolean">false</writeCellNodePositions>
+      <writeMeanCellVelocities type="boolean">false</writeMeanCellVelocities>
+      <calRadialDistributionFunction type="boolean">false</calRadialDistributionFunction>
+      <writeCellGridPositions type="boolean">false</writeCellGridPositions>
+      <writeSlimeGridPositions type="boolean">false</writeSlimeGridPositions>
+      <writeInstCellVelocities type="boolean">false</writeInstCellVelocities>
+      <writeCellInformation type="boolean">true</writeCellInformation>
+    </calculations>
+    
+    <images>
+      <imageDir type="java.lang.String">images</imageDir>
+      <takeSnapShotFlag type="boolean">true</takeSnapShotFlag>      
+      <imageSnapShotTime type="float">0.0999</imageSnapShotTime>
+      <drawSlimePathImage type="boolean">false</drawSlimePathImage>
+      <drawCellPathImage type="boolean">false</drawCellPathImage>	  
+    </images>       
+		    
+    <misc>
+      <DEBUG>
+        <DEBUGMODE type="boolean">false</DEBUGMODE>
+      </DEBUG>
+      <twoCellSimulationParam>
+        <twoCellSimulation type="boolean">true</twoCellSimulation>		
+        <cell1xPosition type="float">11.0</cell1xPosition>        
+        <cell1yPosition type="float">50.0</cell1yPosition>
+        <cell2xPosition type="float">4.6</cell2xPosition>
+        <cell2yPosition type="float">50.0</cell2yPosition>
+        <cell1Nodes type="int">7</cell1Nodes>
+        <cell2Nodes type="int">7</cell2Nodes>
+        <cell2Orientation type="float">0.0</cell2Orientation>
+        <cell1Orientation type="float">0.0</cell1Orientation>
+      </twoCellSimulationParam>
+	  <DiffCellTypesSimulation>
+		<numCellTypes type="int">1</numCellTypes>
+		<cellTypeFractions type="string">{0,1.0}</cellTypeFractions>
+		<infectionSpreadModel type="boolean">false</infectionSpreadModel>
+	  </DiffCellTypesSimulation>	  
+	  <CollisionFiltering>
+		<deactivateCellCollision type="boolean">false</deactivateCellCollision>
+	  </CollisionFiltering>
+    </misc>
+</flexiCellSimulationParameters>
