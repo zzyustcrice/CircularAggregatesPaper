@@ -61,26 +61,24 @@ $10^-15$ kg in cell scale = 1 kg in simulation
 Correspondingly simulation parameter values indicated in Table 2 of the paper are converted to simulation scale. Converted simulation parameter values are shown below:
 
 ## Figure 2
-**2A:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = ??
+**2A:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = 0
 
-**2B:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = ??
+**2B:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = 150
 
-**2C:** cellReversalsFlag = false, slimeAlignmentFlag = true, attractionForceFactor = ??
+**2C:** cellReversalsFlag = false, slimeAlignmentFlag = true, attractionForceFactor = 0
 
-**2D:** cellReversalsFlag = false, slimeAlignmentFlag = true, attractionForceFactor = ??
+**2D:** cellReversalsFlag = false, slimeAlignmentFlag = true, attractionForceFactor = 15
 
 **2E:** cellReversalsFlag = true, reverseTimeMean = 70.0, slimeAlignmentFlag = true
 
 **2F:** cellReversalsFlag = false, slimeAlignmentFlag = false
 
 ## Figure 3
-**3A:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = ??
-
-**3B:** Data available at the following URL: https://github.com/Igoshin-Group/CA_paper_data/tree/main/Fig%203
+**3A&3B:** Data available at the following URL: https://github.com/Igoshin-Group/CA_paper_data/tree/main/Fig%203
 
 ## Figure 4
-**4A:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = ??
+**4A:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = 1.5
 
-**4B:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = ??
+**4B:** cellReversalsFlag = true, reverseTimeMean = 8.0, slimeAlignmentFlag = true, attractionForceFactor = 15
 
 **4C & 4D:** Data available at the following URL: https://github.com/Igoshin-Group/CA_paper_data/tree/main/Fig4
